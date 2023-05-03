@@ -1,0 +1,40 @@
+------------------------- Abonnes
+GET /abonnes HTTP/1.1
+Host: localhost:8080
+Connection: close
+
+GET /abonnes/searchName?nomAb=SMITH&prenomAb=KING HTTP/1.1
+Host: localhost:8080
+Connection: close
+
+GET /abonnes/3 HTTP/1.1
+Host: localhost:8080
+Connection: close
+
+------------------------- Livres
+GET /livres HTTP/1.1
+Host: localhost:8080
+Connection: close
+
+GET /livres/2 HTTP/1.1
+Host: localhost:8080
+Connection: close
+
+GET /livres/searchAuteur?firstName=OLIVIER&lastName=HEURTEL
+Host: localhost:8080
+Connection: close
+
+GET /livres/searchTitle?title=ORACLE HTTP/1.1
+Host: localhost:8080
+Connection: close
+
+------------------------- Emprunts
+GET /emprunts HTTP/1.1
+Host: localhost:8080
+Connection: close
+
+GET /emprunts/3 HTTP/1.1
+Host: localhost:8080
+Connection: close
+
+------------------------- Auteurs

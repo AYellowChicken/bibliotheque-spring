@@ -38,19 +38,6 @@ public class AbonneController {
         return new ResponseEntity<List<Abonne>>(abonneService.findAll(), HttpStatus.OK);
     }    
 
-    // Find by all params
-    @GetMapping("/search")
-    public ResponseEntity<?> findByAllParams(@RequestParam(required = false) Integer numAbonne,
-            @RequestParam(required = false) String prenomAb,
-            @RequestParam(required = false) String nomAb,
-            @RequestParam(required = false) String addresseAb,
-            @RequestParam(required = false) String telephoneAb) {
-        Optional<Abonne> result = abonneService.findByAllParams(numAbonne, prenomAb, nomAb, addresseAb, telephoneAb);
-        if (!result.isEmpty()) {
-            return new ResponseEntity<Abonne>(result.get(), HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
 
     // Find by prenom and nom
     @GetMapping("/searchName")
@@ -110,5 +97,20 @@ public class AbonneController {
         }
 
     }
+
+    // UNUSED : Find by all params
+    @GetMapping("/search")
+    public ResponseEntity<?> findByAllParams(@RequestParam(required = false) Integer numAbonne,
+            @RequestParam(required = false) String prenomAb,
+            @RequestParam(required = false) String nomAb,
+            @RequestParam(required = false) String addresseAb,
+            @RequestParam(required = false) String telephoneAb) {
+        Optional<Abonne> result = abonneService.findByAllParams(numAbonne, prenomAb, nomAb, addresseAb, telephoneAb);
+        if (!result.isEmpty()) {
+            return new ResponseEntity<Abonne>(result.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 
 }
