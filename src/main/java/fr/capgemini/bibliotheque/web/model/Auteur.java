@@ -2,6 +2,8 @@ package fr.capgemini.bibliotheque.web.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,6 +31,7 @@ public class Auteur {
     private String nationaliteAu;
 
     @OneToMany(mappedBy = "auteur")
+    @JsonIgnore
     private List<Livre> livres;
 
     public Auteur() {

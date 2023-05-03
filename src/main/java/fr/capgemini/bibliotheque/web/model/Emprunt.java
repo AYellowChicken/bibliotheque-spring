@@ -12,6 +12,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.persistence.Transient;
 
 @Entity
 @IdClass(EmpruntId.class)
@@ -40,9 +41,15 @@ public class Emprunt {
     @Temporal(TemporalType.DATE)
 	@Column(name="DateRetourEffective")
 	private Date dateRetourEffective;
-	
 
+    @Transient
+    private boolean retardNY;
 
+    public boolean isRetardNY() {
+        Date today = new Date();
+        return (dateRetourEffective != null && dateRetourEffective.before(dateRetourPrevue))
+				|| dateRetourEffective == null && dateRetourPrevue.after(today);
+    }
 
 
 	public Emprunt() {

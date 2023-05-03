@@ -2,6 +2,8 @@ package fr.capgemini.bibliotheque.web.model;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,8 +38,8 @@ public class Livre {
     private int nbrePages;
 
     @OneToMany(mappedBy = "livre")
+    @JsonIgnore
     private Set<Emprunt> emprunt;
-
 
     public Livre() {
     }

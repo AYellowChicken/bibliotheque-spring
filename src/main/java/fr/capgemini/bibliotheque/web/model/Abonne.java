@@ -10,6 +10,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "abonne")
 public class Abonne {
@@ -32,6 +34,7 @@ public class Abonne {
 	private String telephoneAb;
 
     @OneToMany(mappedBy = "abonne")
+    @JsonIgnore
     private Set<Emprunt> emprunt;
 
     public Abonne() {
