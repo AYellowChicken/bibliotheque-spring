@@ -22,12 +22,12 @@ public class LivreServiceImpl implements LivreService {
     private final Logger logger = LoggerFactory.getLogger(EmpruntServiceImpl.class);
 
     public LivreServiceImpl() {
-        logger.info("Using JPA empty constructor!");
+        logger.info("LivreServiceImpl created with empty constructor!");
     }
 
     @Override
     public List<Livre> findAll() {
-        return livreRepository.findAll();
+        return livreRepository.findAllByOrderByIsbnLivre();
     }
 
     @Override
@@ -43,5 +43,40 @@ public class LivreServiceImpl implements LivreService {
     @Override
     public List<Livre> findByTitle(String title) {
         return livreRepository.findByTitreIgnoreCaseContaining(title);
+    }
+
+    @Override
+    public Livre updateLivre(Livre livre) throws NullPointerException {
+        Optional<Livre> livreToUpdateSearch = findByISBN(livre.getIsbnLivre());
+        if (livreToUpdateSearch.isEmpty()) {
+            throw new NullPointerException("Aucun livre à update trouvé");
+        }
+        Livre livreToUpdate = livreToUpdateSearch.get();
+        livreToUpdate.setTitre(livre.getTitre());
+        livreToUpdate.setAuteur(livre.getAuteur());
+        livreToUpdate.setEditeur(livre.getEditeur());
+        livreToUpdate.setNbrePages(livre.getNbrePages());
+        save(livreToUpdate);
+
+        return livreToUpdate;
+    }
+
+    @Override
+    public void deleteLivre(int isbnLivre) throws NullPointerException {
+        Optional<Livre> livreToDeleteSearch = findByISBN(isbnLivre);
+        if (livreToDeleteSearch.isEmpty()) {
+            throw new NullPointerException("Aucun livre à delete trouvé");
+        }
+        delete(isbnLivre);
+    }
+
+    @Override
+    public Livre save (Livre livre) {
+        return livreRepository.save(livre);
+    }
+
+    @Override
+    public void delete(int isbnLivre) {
+        livreRepository.deleteById(isbnLivre);
     }
 }

@@ -11,6 +11,36 @@ GET /abonnes/3 HTTP/1.1
 Host: localhost:8080
 Connection: close
 
+CRUD
+POST /abonnes HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 99
+
+{
+	"prenomAb": "Josuke",
+	"nomAb": "Joestar",
+	"addressAb": "Morioh",
+	"telephoneAb": "0666"
+}
+
+PUT /abonnes HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 113
+
+{
+	"numAbonne":  3,
+	"prenomAb": "Josuke",
+	"nomAb": "Joestar",
+	"addressAb": "TV",
+	"telephoneAb": "0666"
+}
+
+DELETE /abonnes/10 HTTP/1.1
+Host: localhost:8080
+
+
 ------------------------- Livres
 GET /livres HTTP/1.1
 Host: localhost:8080
@@ -28,6 +58,43 @@ GET /livres/searchTitle?title=ORACLE HTTP/1.1
 Host: localhost:8080
 Connection: close
 
+CRUD
+POST /livres HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 116
+
+{
+	"titre": "Harry Pottaaa",
+"auteur": {
+		"numAuteur": 3
+	},
+	"editeur": "Gallimard",
+"nbrePages": 300
+}
+
+UPDATE
+PUT /livres HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 147
+
+{
+"isbnLivre": 10,
+	"titre": "Harry Pottaaa et la pierre",
+"auteur": {
+		"numAuteur": 4
+	},
+	"editeur": "Gallimard",
+"nbrePages": 300
+}
+
+
+DELETE
+DELETE /livres/9 HTTP/1.1
+Host: localhost:8080
+
+
 ------------------------- Emprunts
 GET /emprunts HTTP/1.1
 Host: localhost:8080
@@ -37,4 +104,67 @@ GET /emprunts/3 HTTP/1.1
 Host: localhost:8080
 Connection: close
 
+CRUD
+CREATE
+Impossible à cause des deux :
+POST /emprunts?numAbonne=2&isbnLivre=8 HTTP/1.1
+Host: localhost:8080
+
+
+Impossible à cause du livre
+POST /emprunts?numAbonne=3&isbnLivre=8 HTTP/1.1
+Host: localhost:8080
+
+
+Possible :
+POST /emprunts?numAbonne=3&isbnLivre=7 HTTP/1.1
+Host: localhost:8080
+
+
+UPDATE (on rend l'emprunt)
+PUT /emprunts?numAbonne=3&isbnLivre=7 HTTP/1.1
+Host: localhost:8080
+
+
+
 ------------------------- Auteurs
+GET /auteurs HTTP/1.1
+Host: localhost:8080
+Connection: close
+
+GET /auteurs/2 HTTP/1.1
+Host: localhost:8080
+Connection: close
+
+GET /auteurs/searchName?firstName=olivier HTTP/1.1
+Host: localhost:8080
+Connection: close
+
+CRUD
+POST /auteurs HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 88
+
+{
+	"nomAu": "Rowling",
+	"prenomAu": "JK",
+	"nationaliteAu": "British je crois"
+}
+
+PUT /auteurs HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 100
+
+{
+"numAuteur": 6,
+	"nomAu": "Rowling",
+	"prenomAu": "JK",
+	"nationaliteAu": "En fait non"
+}
+
+DELETE /auteurs/6 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+

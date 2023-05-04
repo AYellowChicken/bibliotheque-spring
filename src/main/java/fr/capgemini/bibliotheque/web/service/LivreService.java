@@ -9,9 +9,8 @@ public interface LivreService {
     Optional<Livre> findByISBN(int isbn);
     List<Livre> findByAuteur(String firstName, String lastName);
     List<Livre> findByTitle(String title);
-
-    // Abonne updateAbonne(Abonne abonne) throws NullPointerException;
-    // void deleteAbonne(int NumAbonne) throws NullPointerException;
-    // Abonne save(Abonne abonne);
-    // void delete(int numAbonne);
+    Livre updateLivre(Livre livre) throws NullPointerException;
+    void deleteLivre(int isbnLivre) throws NullPointerException;
+    Livre save (Livre livre);
+    void delete(int isbnLivre);
 }

@@ -1,5 +1,6 @@
 package fr.capgemini.bibliotheque.web.model;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import jakarta.persistence.CascadeType;
@@ -47,9 +48,13 @@ public class Emprunt {
 
     public boolean isRetardNY() {
         Date today = new Date();
-        return (dateRetourEffective != null && dateRetourEffective.before(dateRetourPrevue))
-				|| dateRetourEffective == null && dateRetourPrevue.after(today);
+        return (dateRetourEffective != null && dateRetourEffective.after(dateRetourPrevue))
+				|| dateRetourEffective == null && dateRetourPrevue.before(today);
     }
+
+	public boolean isNonRendu() {
+		return dateRetourEffective == null;
+	}
 
 
 	public Emprunt() {
@@ -112,6 +117,13 @@ public class Emprunt {
 			", dateRetourPrevue='" + getDateRetourPrevue() + "'" +
 			", dateRetourEffective='" + getDateRetourEffective() + "'" +
 			"}";
+	}
+
+	public static Date generateReturnDate(Date today) {
+		Calendar calendar = Calendar.getInstance();  // Create a calendar instance and set it to today's date
+		calendar.setTime(today);
+		calendar.add(Calendar.MONTH, 1); // Add one month to the date
+		return calendar.getTime();
 	}
 
 }

@@ -36,8 +36,7 @@ public class AbonneController {
     @GetMapping
     public ResponseEntity<List<Abonne>> findAll() {
         return new ResponseEntity<List<Abonne>>(abonneService.findAll(), HttpStatus.OK);
-    }    
-
+    }
 
     // Find by prenom and nom
     @GetMapping("/searchName")
@@ -73,9 +72,10 @@ public class AbonneController {
         }
     }
 
+    // Update Abonne (Json body)
     @PutMapping
     public ResponseEntity<Abonne> updateAbonne(@RequestBody Abonne abonne) {
-        logger.info("Updating abonné");
+        logger.info("Updating abonné " + abonne.getNumAbonne());
         try {
             Abonne abonneToUpdate = abonneService.updateAbonne(abonne);
             return new ResponseEntity<Abonne>(abonneToUpdate, HttpStatus.OK); // We can also return just "updated"
@@ -87,8 +87,10 @@ public class AbonneController {
 
     }
 
+    // Delete Abonne (numAbonne)
     @DeleteMapping("/{numAbonne}")
     public ResponseEntity<Void> deleteAbonne(@PathVariable int numAbonne) {
+        logger.info("Deleting abonné " + numAbonne);
         try {
             abonneService.deleteAbonne(numAbonne);
             return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);

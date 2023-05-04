@@ -6,8 +6,9 @@ import java.util.List;
 public interface EmpruntService {
     List<Emprunt> findAll();
     List<Emprunt> findByNumAbonne(int numAbonne);
-    // Abonne updateAbonne(Abonne abonne) throws NullPointerException;
-    // void deleteAbonne(int NumAbonne) throws NullPointerException;
-    // Abonne save(Abonne abonne);
-    // void delete(int numAbonne);
+    List<Emprunt> findByNumAbonneAndIsbnLivre(int numAbonne, int isbnLivre);
+    List<Emprunt> findByIsbnLivre(int isbnLivre);
+    boolean isEmpruntPossibleForAbonne(int numAbonne);
+    boolean isEmpruntPossibleForIsbn(int isbnLivre);
+    Emprunt save(Emprunt emprunt);
 }

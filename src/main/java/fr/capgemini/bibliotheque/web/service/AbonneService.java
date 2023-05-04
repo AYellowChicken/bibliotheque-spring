@@ -8,9 +8,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface AbonneService {
-    Page<Abonne> findAll(Pageable pageable);
+    Page<Abonne> findAll(Pageable pageable); // Unused but better to use pageing
     List<Abonne> findAll();
-    Optional<Abonne> findByAllParams(Integer numAbonne, String prenomAb, String nomAb, String addressAb, String telephoneAb);
+    Optional<Abonne> findByAllParams(Integer numAbonne, String prenomAb, String nomAb, String addressAb, String telephoneAb); // Unused
     Optional<Abonne> findByNumAbonne(int numAbonne);
     Optional<Abonne> findByFirstNameAndLastName(String prenomAb, String nomAb);
     Abonne updateAbonne(Abonne abonne) throws NullPointerException;

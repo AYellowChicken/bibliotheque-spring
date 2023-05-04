@@ -16,6 +16,15 @@ public interface AbonneRepository extends JpaRepository<Abonne, Integer> {
     List<Abonne> findByPrenomAb(String prenomAb);
     Abonne findByPrenomAbIgnoreCaseContainingAndNomAbIgnoreCaseContaining(String prenomAb, String nomAb);
     
+
+
+
+
+
+
+
+
+    // Unused
     // JPQL
     @Query("SELECT a FROM Abonne a WHERE " +
     "(:numAbonne IS NULL OR a.numAbonne = :numAbonne) AND " +
@@ -29,18 +38,4 @@ public interface AbonneRepository extends JpaRepository<Abonne, Integer> {
         @Param("nomAb") String nomAb,
         @Param("addresseAb") String addressAb,
         @Param("telephoneAb") String telephoneAb);
-
-    // @Query("SELECT a FROM Abonne a WHERE " +
-    //     "(:numAbonne IS NULL OR a.numAbonne = :numAbonne) AND " +
-    //     "(:prenomAb IS NULL OR LOWER(a.prenomAb) = LOWER(:prenomAb)) AND " +
-    //     "(:nomAb IS NULL OR LOWER(a.nomAb) = LOWER(:nomAb)) AND " +
-    //     "(:addressAb IS NULL OR LOWER(a.addressAb) = LOWER(:addressAb)) AND " +
-    //     "(:telephoneAb IS NULL OR a.telephoneAb = :telephoneAb)")
-    // Abonne findByNumAbonneAndPrenomAbAndNomAbAndAddressAbAndTelephoneAb(
-    //     @Param("numAbonne") Integer numAbonne,
-    //     @Param("prenomAb") String prenomAb,
-    //     @Param("nomAb") String nomAb,
-    //     @Param("addressAb") String addressAb,
-    //     @Param("telephoneAb") String telephoneAb);
-
 }

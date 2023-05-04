@@ -24,36 +24,24 @@ public class AbonneServiceImpl implements AbonneService {
     private final Logger logger = LoggerFactory.getLogger(AbonneServiceImpl.class);
 
     public AbonneServiceImpl() {
-        logger.info("AbonneServiceImpl using JPA empty constructor!");
+        logger.info("AbonneServiceImpl created with empty constructor!");
     }
-
-    // public AbonneServiceImpl(@Qualifier("AbonneJPARepository") AbonneRepository abonneRepository) {
-    //     logger.info("Using JPA !");
-    //     this.abonneRepository = abonneRepository;
-    // }
 
     @Override
     public List<Abonne> findAll() {
         return abonneRepository.findAllByOrderByNumAbonne();
     }
 
+    // Unused
     @Override
     public Page<Abonne> findAll(Pageable pageable) {
         return abonneRepository.findAll(pageable);
     }
 
+    // Unused
     @Override
     public Optional<Abonne> findByAllParams(Integer numAbonne, String prenomAb, String nomAb, String addresseAb, String telephoneAb) {
         return Optional.ofNullable(abonneRepository.findByAllParamsNicely(numAbonne, prenomAb, nomAb, addresseAb, telephoneAb));
-        // return Optional.ofNullable(abonneRepository.findByNumAbonneAndPrenomAbAndNomAbAndAddressAbAndTelephoneAb(numAbonne, prenomAb, nomAb, addressAb, telephoneAb));
-
-        // Optional<Integer> optionalNumAbonne = Optional.ofNullable(numAbonne);
-        // Optional<String> optionalPrenomAb = Optional.ofNullable(prenomAb);
-        // Optional<String> optionalNomAb = Optional.ofNullable(nomAb);
-        // Optional<String> optionalAddressAb = Optional.ofNullable(addressAb);
-        // Optional<String> optionalTelephoneAb = Optional.ofNullable(telephoneAb);
-        
-        // return abonneRepository.findByNumAbonneAndPrenomAbAndNomAbAndAddressAbAndTelephoneAb(optionalNumAbonne, optionalPrenomAb, optionalNomAb, optionalAddressAb, optionalTelephoneAb);
     }
 
     @Override
@@ -68,18 +56,15 @@ public class AbonneServiceImpl implements AbonneService {
 
     @Override
     public Abonne updateAbonne(Abonne abonne) {
-        Optional<Abonne> abonneToUpdateSearch = findByNumAbonne(abonne.getNumAbonne());
-        if (abonneToUpdateSearch.isEmpty()) {
-            throw new NullPointerException("Aucun abonné à update trouvé");
-        }
-        Abonne abonneToUpdate = abonneToUpdateSearch.get();
+        Abonne abonneToUpdate = findByNumAbonne(abonne.getNumAbonne())
+                                        .orElseThrow(() -> new NullPointerException("Aucun abonné à update trouvé"));
+                                        
         abonneToUpdate.setNomAb(abonne.getNomAb());
         abonneToUpdate.setPrenomAb(abonne.getPrenomAb());
         abonneToUpdate.setTelephoneAb(abonne.getTelephoneAb());
         abonneToUpdate.setAddresseAb(abonne.getAddresseAb());
-        save(abonneToUpdate);
-
-        return abonneToUpdate;
+        Abonne updatedAbonne = save(abonneToUpdate);
+        return updatedAbonne;
     }
 
     @Override
