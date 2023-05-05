@@ -14,7 +14,7 @@ public interface AbonneRepository extends JpaRepository<Abonne, Integer> {
     List<Abonne> findAllByOrderByNumAbonne();
     Abonne findByNumAbonne(int numAbonne);
     List<Abonne> findByPrenomAb(String prenomAb);
-    Abonne findByPrenomAbIgnoreCaseContainingAndNomAbIgnoreCaseContaining(String prenomAb, String nomAb);
+    List<Abonne> findByPrenomAbIgnoreCaseContainingAndNomAbIgnoreCaseContaining(String prenomAb, String nomAb);
     
 
 

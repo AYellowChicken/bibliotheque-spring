@@ -13,7 +13,7 @@ function appendEmpruntsNumAbonne() {
       .done(function(data) {
         console.log(data);
 
-        if(data.length > 0) {
+        if(data !== undefined && data.length > 0) {
             const contentDisplay = $('#emprunts-display-div');
 
             const newEmpruntTable = $("<table>")

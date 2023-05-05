@@ -40,14 +40,10 @@ public class AbonneController {
 
     // Find by prenom and nom
     @GetMapping("/searchName")
-    public ResponseEntity<?> findByNames(
+    public ResponseEntity<List<Abonne>> findByNames(
             @RequestParam(required = false) String prenomAb,
             @RequestParam(required = false) String nomAb) {
-        Optional<Abonne> result = abonneService.findByFirstNameAndLastName(prenomAb, nomAb);
-        if (!result.isEmpty()) {
-            return new ResponseEntity<Abonne>(result.get(), HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<List<Abonne>>(abonneService.findByFirstNameAndLastName(prenomAb, nomAb), HttpStatus.OK);
     }
 
     // Find by NumAbonne

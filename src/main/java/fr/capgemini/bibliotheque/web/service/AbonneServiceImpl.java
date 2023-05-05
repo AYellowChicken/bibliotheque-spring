@@ -50,8 +50,8 @@ public class AbonneServiceImpl implements AbonneService {
     }
 
     @Override
-    public Optional<Abonne> findByFirstNameAndLastName(String firstName, String lastName) {
-        return Optional.ofNullable(abonneRepository.findByPrenomAbIgnoreCaseContainingAndNomAbIgnoreCaseContaining(firstName, lastName));
+    public List<Abonne> findByFirstNameAndLastName(String firstName, String lastName) {
+        return abonneRepository.findByPrenomAbIgnoreCaseContainingAndNomAbIgnoreCaseContaining(firstName, lastName);
     }
 
     @Override

@@ -12,7 +12,7 @@ public interface AbonneService {
     List<Abonne> findAll();
     Optional<Abonne> findByAllParams(Integer numAbonne, String prenomAb, String nomAb, String addressAb, String telephoneAb); // Unused
     Optional<Abonne> findByNumAbonne(int numAbonne);
-    Optional<Abonne> findByFirstNameAndLastName(String prenomAb, String nomAb);
+    List<Abonne> findByFirstNameAndLastName(String prenomAb, String nomAb);
     Abonne updateAbonne(Abonne abonne) throws NullPointerException;
     void deleteAbonne(int NumAbonne) throws NullPointerException;
     Abonne save(Abonne abonne);
