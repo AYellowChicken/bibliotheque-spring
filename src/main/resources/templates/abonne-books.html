@@ -12,25 +12,27 @@
     <title>Jquery time baby</title>
 </head>
 <body>
-    <h1>Recherche de livres</h1>
+    <div class="container">
+        <h1>Recherche de livres</h1>
     
-    <form id="searchLivreIsbn" onSubmit="event.preventDefault(); appendLivresIsbn()">
-        <input type="number" id="isbnLivre" placeholder="ISBN du livre"/>
-        <button class="btn btn-primary" type="submit">Chercher par ISBN</button>
-    </form>
+        <form id="searchLivreIsbn" onSubmit="event.preventDefault(); appendLivresIsbn()">
+            <input type="number" id="isbnLivre" placeholder="ISBN du livre"/>
+            <button class="btn btn-primary" type="submit">Chercher par ISBN</button>
+        </form>
 
-    <form id="searchLivreTitre" onSubmit="event.preventDefault(); appendLivresTitre()">
-        <input type="text" id="titreLivre" placeholder="Titre du livre"/>
-        <button class="btn btn-primary" type="submit">Chercher par titre</button>
-    </form>    
-    
-    <form id="searchLivreAuteur" onSubmit="event.preventDefault(); appendLivresAuteur()">
-        <input type="text" id="prenomAu" placeholder="Prénom auteur"/>
-        <input type="text" id="nomAu" placeholder="Nom auteur"/>
-        <button class="btn btn-primary" type="submit">Chercher par auteur</button>
-    </form>
+        <form id="searchLivreTitre" onSubmit="event.preventDefault(); appendLivresTitre()">
+            <input type="text" id="titreLivre" placeholder="Titre du livre"/>
+            <button class="btn btn-primary" type="submit">Chercher par titre</button>
+        </form>    
+        
+        <form id="searchLivreAuteur" onSubmit="event.preventDefault(); appendLivresAuteur()">
+            <input type="text" id="prenomAu" placeholder="Prénom auteur"/>
+            <input type="text" id="nomAu" placeholder="Nom auteur"/>
+            <button class="btn btn-primary" type="submit">Chercher par auteur</button>
+        </form>
+    </div>
 
     <!-- Append Ajax Jquery results here -->
-    <div id="livres-display-div"></div>
+    <div id="livres-display-div" class="container"></div>
 </body>
 </html>

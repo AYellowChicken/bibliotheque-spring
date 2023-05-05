@@ -12,15 +12,17 @@
     <title>Jquery time baby</title>
 </head>
 <body>
-    <h1>Recherche d'emprunts</h1>
-    
-    <form id="searchEmpruntsNumAbonne" onSubmit="event.preventDefault(); appendEmpruntsNumAbonne()">
-        <input type="number" id="numAbonne" hint="Numéro abonné"/>
-        <button class="btn btn-primary" type="submit">Chercher par numéro abonné</button>
-    </form>
+    <div class="container">
+        <h1>Recherche d'emprunts</h1>
+        
+        <form id="searchEmpruntsNumAbonne" onSubmit="event.preventDefault(); appendEmpruntsNumAbonne()">
+            <input type="number" id="numAbonne" hint="Numéro abonné"/>
+            <button class="btn btn-primary" type="submit">Chercher par numéro abonné</button>
+        </form>
+    </div>
 
     <!-- Append Ajax Jquery results here -->
-    <div id="emprunts-display-div"></div>
+    <div id="emprunts-display-div" class="container"></div>
 
 
     <!-- <h1 th:text="${'Liste des emprunts abonné n° ' + param.numAbonne}"></h1>     

@@ -12,25 +12,27 @@
     <title>Jquery time baby</title>
 </head>
 <body>
-    <h1>Gestion d'abonnés</h1>
-    
-    <form id="searchAbonnesNumAbonne" onSubmit="event.preventDefault(); appendAbonnesNumAbonne()">
-        <input type="number" id="numAbonne" hint="Numéro abonné"/>
-        <button class="btn btn-primary" type="submit">Chercher abonnés par numéro abonné</button>
-    </form>    
-    
-    <form id="searchAbonnesNomPrenom" onSubmit="event.preventDefault(); appendAbonnesNomPrenom()">
-        <input type="text" id="prenomAb" hint="Prénom abonné"/>
-        <input type="text" id="nomAb" hint="Nom abonné"/>
-        <button class="btn btn-primary" type="submit">Chercher abonnés par nom/prénom (vide pour tous abonnés)</button>
-    </form>
+    <div class="container">
+        <h1>Gestion d'abonnés</h1>
+        
+        <form id="searchAbonnesNumAbonne" onSubmit="event.preventDefault(); appendAbonnesNumAbonne()">
+            <input type="number" id="numAbonne" hint="Numéro abonné"/>
+            <button class="btn btn-primary" type="submit">Chercher abonnés par numéro abonné</button>
+        </form>    
+        
+        <form id="searchAbonnesNomPrenom" onSubmit="event.preventDefault(); appendAbonnesNomPrenom()">
+            <input type="text" id="prenomAb" hint="Prénom abonné"/>
+            <input type="text" id="nomAb" hint="Nom abonné"/>
+            <button class="btn btn-primary" type="submit">Chercher abonnés par nom/prénom (vide pour tous abonnés)</button>
+        </form>
+    </div>
 
     <!-- Append Ajax Jquery results here -->
-    <div id="abonnes-display-div"></div>
+    <div id="abonnes-display-div" class="container"></div>
 
-    <div id="abonnes-update-div"></div>
+    <div id="abonnes-update-div" class="container"></div>
 
-    <div id="abonne-create-div">
+    <div id="abonne-create-div" class="container">
         <h2>Créer abonné</h2>
         <form id="createAbonne" onSubmit="event.preventDefault(); createAbonne()">
             <input type="text" id="prenomAbCreate" hint="Prénom abonné"/>
