@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/abonne-emprunts.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Jquery time baby</title>
+</head>
+<body>
+    <h1>Recherche d'emprunts</h1>
+    
+    <form id="searchEmpruntsNumAbonne" onSubmit="event.preventDefault(); appendEmpruntsNumAbonne()">
+        <input type="number" id="numAbonne" hint="Numéro abonné"/>
+        <button type="submit">Chercher par numéro abonné</button>
+    </form>
+
+    <!-- Append Ajax Jquery results here -->
+    <div id="emprunts-display-div"></div>
+
+
+    <!-- <h1 th:text="${'Liste des emprunts abonné n° ' + param.numAbonne}"></h1>     
+    <div th:if="${emprunts.size()}>0" >
+        <table id="emprunts-table" class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Num Abonne</th>
+                <th scope="col">ISBN Livre</th>
+                <th scope="col">Date emprunt</th>
+                <th scope="col">Date retour prévue</th>
+                <th scope="col">Date retour effective</th>
+                <th scope="col">Emprunt fautif</th>
+            </tr>
+            </thead>
+            <tbody>
+            
+                <tr th:each="emprunt : ${emprunts}">
+                    <th scope="row" th:text="${emprunt.getAbonne().getNumAbonne()}"></th>
+                    <th scope="row" th:text="${emprunt.getLivre().getIsbnLivre()}"></th>
+                    <td th:text="${#dates.format(emprunt.getDateEmprunt(), 'dd/MM/yyyy')}"></td>
+                    <td th:text="${#dates.format(emprunt.getDateRetourPrevue(), 'dd/MM/yyyy')}"></td>
+                    <td th:text="${#dates.format(emprunt.getDateRetourEffective(), 'dd/MM/yyyy')}"></td>
+                    <td th:text="${emprunt.isRetardNY()}"></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div th:unless="${emprunts.size()}>0">
+        <p>Aucun emprunt trouvé.</p>
+    </div> -->
+</body>
+</html>

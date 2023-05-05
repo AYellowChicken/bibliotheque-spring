@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/exo11ajaxJquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/exo-ajax.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Jquery time baby</title>
+</head>
+<body>
+    <!-- 1. Button, add EventListener onClick : load JQuery -->
+    <button id="load-person-button">Load person here.</button>
+    
+    <!-- 3. Append child containing information -->
+    <div id="persons-display-div"></div>
+    <!-- 4. Style it with CSS -->
+
+    <table id="books-table" class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Books will be added here dynamically -->
+        </tbody>
+    </table>    
+    
+    <!-- <table id="emprunts-table" class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+          </tr>
+        </thead>
+        <tbody> -->
+          <!-- Books will be added here dynamically -->
+        <!-- </tbody>
+    </table>     -->
+    
+    <div th:if="${auteurs.size()}>0" >
+        <table id="auteur-table" class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Num Auteur</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Nationalité</th>
+            </tr>
+            </thead>
+            <tbody>
+            
+                <tr th:each="auteur : ${auteurs}">
+                    <th scope="row" th:text="${auteur.getNumAuteur()}"></th>
+                    <td th:text="${auteur.getNomAu()}"></td>
+                    <td th:text="${auteur.getPrenomAu()}"></td>
+                    <td th:text="${auteur.getNationaliteAu()}"></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div th:unless="${auteurs.size()}>0">
+        <p>Aucun auteur trouvé.</p>
+    </div>    
+    
+    <div th:if="${emprunts.size()}>0" >
+        <table id="emprunts-table" class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Num Abonne</th>
+                <th scope="col">ISBN Livre</th>
+                <th scope="col">Date emprunt</th>
+                <th scope="col">Date retour prévue</th>
+                <th scope="col">Date retour effective</th>
+            </tr>
+            </thead>
+            <tbody>
+            
+                <tr th:each="emprunt : ${emprunts}">
+                    <th scope="row" th:text="${emprunt.getAbonne().getNumAbonne()}"></th>
+                    <th scope="row" th:text="${emprunt.getLivre().getIsbnLivre()}"></th>
+                    <td th:text="${#dates.format(emprunt.getDateEmprunt(), 'dd/MM/yyyy')}"></td>
+                    <td th:text="${#dates.format(emprunt.getDateRetourPrevue(), 'dd/MM/yyyy')}"></td>
+                    <td th:text="${#dates.format(emprunt.getDateRetourEffective(), 'dd/MM/yyyy')}"></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div th:unless="${auteurs.size()}>0">
+        <p>Aucun auteur trouvé.</p>
+    </div>
+      
+    <!-- EITHER AT THE END, OR PUT A DOMCONTENTLOADED-->
+</body>
+</html>

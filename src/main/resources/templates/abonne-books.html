@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/abonne-books.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Jquery time baby</title>
+</head>
+<body>
+    <h1>Recherche de livres</h1>
+    
+    <form id="searchLivreIsbn" onSubmit="event.preventDefault(); appendLivresIsbn()">
+        <input type="number" id="isbnLivre" placeholder="ISBN du livre"/>
+        <button type="submit">Chercher par ISBN</button>
+    </form>
+
+    <form id="searchLivreTitre" onSubmit="event.preventDefault(); appendLivresTitre()">
+        <input type="text" id="titreLivre" placeholder="Titre du livre"/>
+        <button type="submit">Chercher par titre</button>
+    </form>    
+    
+    <form id="searchLivreAuteur" onSubmit="event.preventDefault(); appendLivresAuteur()">
+        <input type="text" id="prenomAu" placeholder="Prénom auteur"/>
+        <input type="text" id="nomAu" placeholder="Nom auteur"/>
+        <button type="submit">Chercher par auteur</button>
+    </form>
+
+    <!-- Append Ajax Jquery results here -->
+    <div id="livres-display-div"></div>
+</body>
+</html>

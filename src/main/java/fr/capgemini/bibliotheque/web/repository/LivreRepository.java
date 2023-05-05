@@ -16,7 +16,7 @@ public interface LivreRepository extends JpaRepository<Livre, Integer> {
     List<Livre> findByAuteur(Auteur auteur);
     void deleteByIsbnLivre(int isbnLivre);
 
-    @Query("SELECT l FROM Livre l JOIN l.auteur a WHERE LOWER(a.prenomAu) LIKE LOWER(CONCAT('%', :firstName, '%')) OR LOWER(a.nomAu) LIKE LOWER(CONCAT('%', :lastName, '%'))")
+    @Query("SELECT l FROM Livre l JOIN l.auteur a WHERE (:firstName IS NULL OR :firstName = '' OR LOWER(a.prenomAu) LIKE LOWER(CONCAT('%', :firstName, '%'))) AND (:lastName IS NULL OR :lastName = '' OR LOWER(a.nomAu) LIKE LOWER(CONCAT('%', :lastName, '%')))")
     List<Livre> findByAuteurQuery(@Param("firstName") String firstName, 
                                 @Param("lastName") String lastName);
     

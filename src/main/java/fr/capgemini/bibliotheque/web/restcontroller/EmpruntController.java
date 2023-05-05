@@ -1,4 +1,4 @@
-package fr.capgemini.bibliotheque.web.controller;
+package fr.capgemini.bibliotheque.web.restcontroller;
 
 import java.util.List;
 import java.util.Collections;
