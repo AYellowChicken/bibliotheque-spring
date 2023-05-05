@@ -12,20 +12,34 @@
     <title>Jquery time baby</title>
 </head>
 <body>
-    <h1>Recherche d'emprunts</h1>
+    <h1>Gestion d'abonnés</h1>
     
     <form id="searchAbonnesNumAbonne" onSubmit="event.preventDefault(); appendAbonnesNumAbonne()">
         <input type="number" id="numAbonne" hint="Numéro abonné"/>
-        <button type="submit">Chercher abonnés par numéro abonné</button>
+        <button class="btn btn-primary" type="submit">Chercher abonnés par numéro abonné</button>
     </form>    
     
     <form id="searchAbonnesNomPrenom" onSubmit="event.preventDefault(); appendAbonnesNomPrenom()">
         <input type="text" id="prenomAb" hint="Prénom abonné"/>
         <input type="text" id="nomAb" hint="Nom abonné"/>
-        <button type="submit">Chercher abonnés par nom/prénom</button>
+        <button class="btn btn-primary" type="submit">Chercher abonnés par nom/prénom (vide pour tous abonnés)</button>
     </form>
 
     <!-- Append Ajax Jquery results here -->
     <div id="abonnes-display-div"></div>
+
+    <div id="abonnes-update-div"></div>
+
+    <div id="abonne-create-div">
+        <h2>Créer abonné</h2>
+        <form id="createAbonne" onSubmit="event.preventDefault(); createAbonne()">
+            <input type="text" id="prenomAbCreate" hint="Prénom abonné"/>
+            <input type="text" id="nomAbCreate" hint="Nom abonné"/>
+            <input type="text" id="addressAbCreate" hint="Adresse abonné"/>
+            <input type="text" id="telephoneAbCreate" hint="Téléphone abonné"/>
+            <button class="btn btn-primary" type="submit">Créer abonné</button>
+        </form>
+    </div>
+
 </body>
 </html>

@@ -2,6 +2,7 @@ package fr.capgemini.bibliotheque.web.model;
 
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,7 +34,7 @@ public class Abonne {
     @Column(name="TelephoneAb")
 	private String telephoneAb;
 
-    @OneToMany(mappedBy = "abonne")
+    @OneToMany(mappedBy = "abonne", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Emprunt> emprunt;
 

@@ -27,7 +27,7 @@ public class Livre {
     @Column(name="Titre")
     private String titre;
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "NumAuteur", referencedColumnName = "NumAuteur")
     private Auteur auteur;
 	
@@ -37,7 +37,7 @@ public class Livre {
     @Column(name="NbrePages")
     private int nbrePages;
 
-    @OneToMany(mappedBy = "livre")
+    @OneToMany(mappedBy = "livre", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Emprunt> emprunt;
 

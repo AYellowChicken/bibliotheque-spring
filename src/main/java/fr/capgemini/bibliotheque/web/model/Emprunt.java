@@ -3,7 +3,6 @@ package fr.capgemini.bibliotheque.web.model;
 import java.util.Calendar;
 import java.util.Date;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -26,12 +25,12 @@ public class Emprunt {
 	private Date dateEmprunt;
 
 	@Id
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "isbnLivre", referencedColumnName = "ISBNLivre")
     private Livre livre;
 	
 	@Id
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "numAbonne", referencedColumnName = "NumAbonne")
     private Abonne abonne;
 

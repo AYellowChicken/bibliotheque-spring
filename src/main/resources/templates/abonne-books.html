@@ -16,18 +16,18 @@
     
     <form id="searchLivreIsbn" onSubmit="event.preventDefault(); appendLivresIsbn()">
         <input type="number" id="isbnLivre" placeholder="ISBN du livre"/>
-        <button type="submit">Chercher par ISBN</button>
+        <button class="btn btn-primary" type="submit">Chercher par ISBN</button>
     </form>
 
     <form id="searchLivreTitre" onSubmit="event.preventDefault(); appendLivresTitre()">
         <input type="text" id="titreLivre" placeholder="Titre du livre"/>
-        <button type="submit">Chercher par titre</button>
+        <button class="btn btn-primary" type="submit">Chercher par titre</button>
     </form>    
     
     <form id="searchLivreAuteur" onSubmit="event.preventDefault(); appendLivresAuteur()">
         <input type="text" id="prenomAu" placeholder="Prénom auteur"/>
         <input type="text" id="nomAu" placeholder="Nom auteur"/>
-        <button type="submit">Chercher par auteur</button>
+        <button class="btn btn-primary" type="submit">Chercher par auteur</button>
     </form>
 
     <!-- Append Ajax Jquery results here -->
